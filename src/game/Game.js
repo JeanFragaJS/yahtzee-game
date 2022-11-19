@@ -28,6 +28,16 @@ class Game extends Component {
     }
   }
 
+  displayRollInfo () {
+    let messasges = [
+      '0 Rolls',
+      '1 Rolls',
+      '2 Rolls',
+      'Starting Round'
+    ]; 
+    return messasges[this.state.numRolls];
+  }
+
 
 
   render () {
@@ -44,6 +54,7 @@ class Game extends Component {
               <button
                 disabled={ locked.every( x=>x ) || numRolls === 0 || isRolling }
               >
+                {this.displayRollInfo()}
               </button>
             </div>
           </section>
