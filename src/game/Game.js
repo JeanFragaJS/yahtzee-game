@@ -38,7 +38,13 @@ class Game extends Component {
     return messasges[this.state.numRolls];
   }
 
-
+  roll (evt) {
+    this.setState( st => ({
+      dices: st.dices.map((val, i) => st.locked[i] ? val : Math.ceil(Math.random() * 6)),
+      numRolls: st.numRolls - 1,
+      isRolling: false
+    }))
+  }
 
   render () {
     const { dices, numRolls, isRolling, locked } = this.state;
