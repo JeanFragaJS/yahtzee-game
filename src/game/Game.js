@@ -42,7 +42,7 @@ class Game extends Component {
             />
             <div>
               <button
-
+                disabled={ locked.every( x=>x ) || numRolls === 0 || isRolling }
               >
               </button>
             </div>
