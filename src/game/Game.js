@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import Dice from "../dice/dice";
 import {faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix} from '@fortawesome/free-solid-svg-icons';
 
+const NUM_DICES = 5;
+const NUM_ROLLS = 3; 
+
 class Game extends Component {
   constructor (props) {
     super(props);
     this.state = {
       dices: [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix],
-      locked: Array(5).fill(false),
+      locked: Array(NUM_DICES).fill(false),
+      numRolls: NUM_ROLLS,
       isRolling: false,
-      numRolls: 3,
       scores: {
         ones: undefined,
         twos: undefined,
@@ -26,7 +29,11 @@ class Game extends Component {
         chance: undefined
       }
     }
+    /* METHODS */
+    this.roll = this.roll.bind(this);
+    this.toggleLocked = this.toggleLocked.bind(this);
   }
+
 
   displayRollInfo () {
     let messasges = [
@@ -38,13 +45,31 @@ class Game extends Component {
     return messasges[this.state.numRolls];
   }
 
+
+
   roll (evt) {
     this.setState( st => ({
       dices: st.dices.map((val, i) => st.locked[i] ? val : Math.ceil(Math.random() * 6)),
+      locked: st.numRolls > 1 ? st.locked : Array(5).fill(true),
       numRolls: st.numRolls - 1,
       isRolling: false
     }))
   }
+  
+  toggleLocked (idx) {
+    const { numRolls, isRolling } = this.state;
+    if ( numRolls > 0 && !isRolling ) {
+      this.setState(st => ({
+        locked: [
+          ...st.locked.slice(0,idx),
+          !st.locked[idx],
+          ...st.locked.slice(idx + 1)
+        ]
+      }));
+    }
+  }
+  
+
 
   render () {
     const { dices, numRolls, isRolling, locked } = this.state;
@@ -55,6 +80,10 @@ class Game extends Component {
           <section>
             <Dice 
               dices={dices}
+              locked={locked}
+              isRolling={isRolling}
+              disabled={numRolls === 0}
+              diceHandleClick={this.toggleLocked}
             />
             <div>
               <button
