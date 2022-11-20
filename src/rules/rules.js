@@ -99,3 +99,44 @@ class Yahtzee extends Rules {
   }
 }
 
+const ones = new TotalOfOneNumber({val: 1, description: "Soma de todos os dados de valor 1"});
+const twos = new TotalOfOneNumber({val: 2, description: "Soma de todos os dados de valor 2"});
+const threes = new TotalOfOneNumber({val: 3, description: "Soma de todos os dados de valor 3"});
+const fours = new TotalOfOneNumber({val: 4, description: "Soma de todos os dados de valor 4"});
+const fives = new TotalOfOneNumber({val: 5, description: "Soma de todos os dados de valor 5"});
+const sixes = new TotalOfOneNumber({val: 6, description: "Soma de todos os dados de valor 6"});
+
+const threeOfSameKind = new SumDistro({
+  count: 3,
+  description: "Soma de três dados iguais (exemplo: 4-4-4-1-2 vale 12 pontos)"
+});
+
+const FourOfSameKind = new SumDistro({
+  count: 4, 
+  description: "Soma de quatro dados iguais (exemplo: 4-4-4-1-2 vale 12 pontos)"
+});
+
+const fullHouse = new FullHouse({
+  score: 25,
+  description: "Soma de três dados iguais e mais dois dados também iguais. (exemplo: 3-3-3-2-2 vale 13 pontos)"
+});
+
+const smallStraight = new SmallStraight({
+  score: 30,
+  description: "Combinação de quatro dados de valores consecutivos"
+});
+
+const largeStraight = new LargeStraight({
+  score: 40,
+  description: "Combinação de cinco dados de valores consecutivos"
+});
+
+const yahtzee = new Yahtzee({
+  score: 50,
+  description: "Combinação de cinco dados de valores iguais"
+});
+
+const chance = new SumDistro({ 
+  count: 0, 
+  description: "Soma de cinco dados aleatórios"
+});
