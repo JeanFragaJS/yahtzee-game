@@ -55,3 +55,14 @@ class Rules {
   }
 }
 
+/**
+ * Full House: a soma de três dados iguais e mais dois dados também iguais. (exemplo: 3-3-3-2-2 vale 13 pontos)
+*/
+
+class FullHouse extends Rules {
+  evalRoll = dices => {
+    const freq = this.frequency(dices);
+    return freq.includes(3) && freq.includes(2) ? this.score : 0;
+  }
+}
+
