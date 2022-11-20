@@ -33,6 +33,7 @@ class Game extends Component {
     this.roll = this.roll.bind(this);
     this.animationRoll =  this.animationRoll.bind(this);
     this.toggleLocked = this.toggleLocked.bind(this);
+    this.doScore = this.doScore.bind(this);
   }
 
   animationRoll () {
@@ -75,6 +76,14 @@ class Game extends Component {
     }
   }
   
+  doScore ( ruleName, ruleFn ) {
+    this.setState(st => ({
+      scores: { ...st.scores, [ruleName]: ruleFn(this.state.dices) },
+      numRolls: NUM_ROLLS,
+      locked: Array(NUM_DICES).fill(false)
+    }));
+    this.animationRoll(); 
+  }
 
 
   render () {
