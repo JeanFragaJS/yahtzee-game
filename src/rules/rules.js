@@ -5,7 +5,7 @@ class Rules {
     Object.assign(this, params);
   }
 
-  sum ( dices ) {
+  sum (dices) {
     /* 
       * soma todos os dados
       * dice =  [2,4,6,1,3]
@@ -14,7 +14,7 @@ class Rules {
     return dices.reduce((prev, curr) => prev + curr); 
   }
 
-  frequency ( dices) {
+  frequency (dices) {
     /* 
       * Frequencia que cada valor aparece nos 5 dados
       * dice =  [2,6,6,1,3]
@@ -26,6 +26,15 @@ class Rules {
     return Array.from(freqs.values()); 
   }
 
-
+  count (dices, val) {
+    /* 
+      * Conta o numero de vezes que o valor aparece; 
+      * dice =  [2,6,6,1,3]
+      * count(dice, 6)
+      * output = 2
+    */ 
+    return dices.filter( diceVal => diceVal === val).length;
+  }
 
 }
+
