@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix} from '@fortawesome/free-solid-svg-icons';
+
+
+
 class Die extends Component {
   static defaultProps =  {
-    numberDices : [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix]
+    numberDices : [1,2,3,4,5,6]
   }
   constructor (props) {
-    super(props); 
+    super(props);
+    this.handleClick = this.handleClick.bind(this); 
   }
 
+  handleClick () {
+    this.props.dieHandleClick(this.props.idx)
+  }
   render () {
-    return <FontAwesomeIcon icon={this.props.numberDices} />
+    const {disabled, locked, isRolling, val} = this.props;
+    return (
+      <FontAwesomeIcon  onClick={this.handleClick} icon={this.props.icon} disabled={disabled}/>
+    )
   }
 }
 
