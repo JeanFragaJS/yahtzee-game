@@ -38,3 +38,20 @@ class Rules {
 
 }
 
+
+ class TotalOfOneNumber extends Rules {
+  evalRoll = dices => {
+    return this.val * this.count(dices, this.val); 
+  }
+}
+
+/**
+ * Trinca: a soma de três dados iguais (exemplo: 4-4-4-1-2 vale 12 pontos)
+ * Quadra: a soma de quatro dados iguais (exemplo: 4-4-4-4-2 vale 16 pontos)
+ */
+ class SumDistro extends Rules {
+  evalRoll = dices => {
+    return this.frequency(dices).some(dice => dice >= this.count) ? this.sum(dices) : 0; 
+  }
+}
+
