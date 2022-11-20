@@ -66,3 +66,28 @@ class FullHouse extends Rules {
   }
 }
 
+/**
+ * Small Straight | sequencia baixa 
+ * (1-2-3-4, 2-3-4-5 ou 3-4-5-6)
+ */
+class SmallStraight extends Rules {
+  evalRoll = (dices) => {
+    const dValues = new Set(dices);
+    // Sequencia baixa 234 + 1 ou 5; 
+    if (dValues.has(2) && dValues.has(3) && dValues.has(4) && dValues.has(1) || dValues.has(5)) return this.score;
+    
+    // Sequencia baixa de 345 + 2 ou 6; 
+    if (dValues.has(3) && dValues.has(4) && dValues.has(5) && dValues.has(2) || dValues.has(6)) return this.score;
+  }
+}
+
+/**Large straight
+ * (1-2-3-4-5 ou  2-3-4-5--6)
+ */
+class LargeStraight extends Rules {
+  evalRoll = (dices) => {
+    const dValues =  new Set(dices);
+    return dValues.size === 5 && (!dValues.has(1) || !dValues.has(6)) ? this.score : 0;
+  }
+}
+
