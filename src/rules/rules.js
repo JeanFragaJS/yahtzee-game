@@ -91,3 +91,11 @@ class LargeStraight extends Rules {
   }
 }
 
+/** Yahtzee */
+class Yahtzee extends Rules {
+  evalRoll = (dices) => {
+    const freq = this.frequency(dices);
+    return freq[0] === 5 ? this.score : 0; 
+  }
+}
+
