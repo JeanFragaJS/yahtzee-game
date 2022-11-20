@@ -1,10 +1,10 @@
 import './App.css';
-import Die from './die/Die';
+import Game from './game/Game';
 
 function App() {
   return (
     <div className="App">
-      <Die/>
+      <Game/>
     </div>
   );
 }
