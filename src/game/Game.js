@@ -31,9 +31,15 @@ class Game extends Component {
     }
     /* METHODS */
     this.roll = this.roll.bind(this);
+    this.animationRoll =  this.animationRoll.bind(this);
     this.toggleLocked = this.toggleLocked.bind(this);
   }
 
+  animationRoll () {
+    this.setState({ isRolling: true }, () => {
+      setTimeout(this.roll, 1000);
+    })
+  }
 
   displayRollInfo () {
     let messasges = [
