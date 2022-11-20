@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Die extends Component {
   static defaultProps =  {
-    numberDices : [1,2,3,4,5,6]
+    numberWords: ["one", "two", "three", "four", "five", "six"]
   }
   constructor (props) {
     super(props);
@@ -17,8 +17,11 @@ class Die extends Component {
   }
   render () {
     const {disabled, locked, isRolling, val} = this.props;
+    let classes =  `Die-${this.props.numberWords[this.props.idx]}`;
+    if ( locked ) classes += " Die-locked";
+    if ( isRolling ) classes += " Die-isRolling";
     return (
-      <FontAwesomeIcon  onClick={this.handleClick} icon={this.props.icon} disabled={disabled}/>
+      <FontAwesomeIcon className={classes} onClick={this.handleClick} icon={this.props.val} disabled={disabled}/>
     )
   }
 }
