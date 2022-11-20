@@ -140,3 +140,19 @@ const chance = new SumDistro({
   count: 0, 
   description: "Soma de cinco dados aleatórios"
 });
+
+export {
+  ones,
+  twos,
+  threes,
+  fours,
+  fives,
+  sixes,
+  threeOfSameKind,
+  FourOfSameKind,
+  fullHouse,
+  smallStraight,
+  largeStraight,
+  yahtzee,
+  chance
+}
