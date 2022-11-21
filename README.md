@@ -1,5 +1,5 @@
-<igm src="https://drive.google.com/file/d/1pKXSBa1xrUsJBUraPynwq3KsG0Yq1e4e/view?usp=share_link" alt="Yahtzee"/>
 
+![Yahtzee](https://drive.google.com/file/d/1pKXSBa1xrUsJBUraPynwq3KsG0Yq1e4e/view?usp=share_link)
 # Yhatzee
 
 ### Como Jogar ? 
