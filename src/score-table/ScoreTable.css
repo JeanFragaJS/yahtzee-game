@@ -1,0 +1,32 @@
+.ScoreTable {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  width: 100%;
+  height: 80%;
+  margin-bottom: 20%;
+  background-color: white;
+  
+}
+
+.ScoreTable h2 {
+  color:rgb(119, 43, 226);
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.ScoreTable table {
+  width: 100%;
+  margin: 0 auto;
+  min-width: 400px;
+  padding: 4%;
+}
+
+.ScoreTable-section {
+  vertical-align: top;
+  width: 100%;
+}
+
+.ScoreTable-section h2 {
+  color:rgb(119, 43, 226);
+}
