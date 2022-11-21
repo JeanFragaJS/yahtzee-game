@@ -74,10 +74,10 @@ class SmallStraight extends Rules {
   evalRoll = (dices) => {
     const dValues = new Set(dices);
     // Sequencia baixa 234 + 1 ou 5; 
-    if (dValues.has(2) && dValues.has(3) && dValues.has(4) && dValues.has(1) || dValues.has(5)) return this.score;
-    
+    if (dValues.has(2) && dValues.has(3) && dValues.has(4) && (dValues.has(1) || dValues.has(5)) ) return this.score;
     // Sequencia baixa de 345 + 2 ou 6; 
-    if (dValues.has(3) && dValues.has(4) && dValues.has(5) && dValues.has(2) || dValues.has(6)) return this.score;
+    else if (dValues.has(3) && dValues.has(4) && dValues.has(5) && (dValues.has(2) || dValues.has(6)) ) return this.score;
+    else return 0;
   }
 }
 
@@ -108,37 +108,37 @@ const sixes = new TotalOfOneNumber({val: 6, description: "Soma de todos os dados
 
 const threeOfSameKind = new SumDistro({
   count: 3,
-  description: "Soma de três dados iguais (exemplo: 4-4-4-1-2 vale 12 pontos)"
+  description: "Três dados iguais + o restante"
 });
 
-const FourOfSameKind = new SumDistro({
+const fourOfSameKind = new SumDistro({
   count: 4, 
-  description: "Soma de quatro dados iguais (exemplo: 4-4-4-1-2 vale 12 pontos)"
+  description: "Soma quatro dados iguais + o restante"
 });
 
 const fullHouse = new FullHouse({
   score: 25,
-  description: "Soma de três dados iguais e mais dois dados também iguais. (exemplo: 3-3-3-2-2 vale 13 pontos)"
+  description: "Três dados iguais e outros dois também iguais (25 pontos)"
 });
 
 const smallStraight = new SmallStraight({
   score: 30,
-  description: "Combinação de quatro dados de valores consecutivos"
+  description: "Quatro dados de valores consecutivos (30 pontos)"
 });
 
 const largeStraight = new LargeStraight({
   score: 40,
-  description: "Combinação de cinco dados de valores consecutivos"
+  description: "Cinco dados de valores consecutivos (40 pontos)"
 });
 
 const yahtzee = new Yahtzee({
   score: 50,
-  description: "Combinação de cinco dados de valores iguais"
+  description: "Cinco dados de valores iguais (50 pontos)"
 });
 
 const chance = new SumDistro({ 
   count: 0, 
-  description: "Soma de cinco dados aleatórios"
+  description: "Soma cinco dados aleatórios"
 });
 
 export {
@@ -149,7 +149,7 @@ export {
   fives,
   sixes,
   threeOfSameKind,
-  FourOfSameKind,
+  fourOfSameKind,
   fullHouse,
   smallStraight,
   largeStraight,
