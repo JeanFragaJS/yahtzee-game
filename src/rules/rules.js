@@ -108,12 +108,12 @@ const sixes = new TotalOfOneNumber({val: 6, description: "Soma de todos os dados
 
 const threeOfSameKind = new SumDistro({
   count: 3,
-  description: "Três dados iguais + o restante"
+  description: "Três dados iguais"
 });
 
 const fourOfSameKind = new SumDistro({
   count: 4, 
-  description: "Soma quatro dados iguais + o restante"
+  description: "Soma quatro dados iguais"
 });
 
 const fullHouse = new FullHouse({
