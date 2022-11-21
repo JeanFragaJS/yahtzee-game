@@ -1,8 +1,7 @@
 
-![Yahtzee](https://drive.google.com/file/d/1pKXSBa1xrUsJBUraPynwq3KsG0Yq1e4e/view?usp=share_link)
-# Yhatzee
+![Yahtzee](https://github.com/JeanFragaJS/yahtzee-game/blob/master/assets/yahtzee-wide.png?raw=true)
 
-### Como Jogar ? 
+# Como Jogar ? 
 
 - O objetivo principal do jogo é obter uma pontuação mais alta.
 - Você marca pontos ao lançar 5 dados a cada jogada. O jogador tem três chances para lançar os dados.
@@ -10,7 +9,7 @@
 - Você pode manter todos os cinco dados para cada lançamento separado, descartar todos eles ou manter só alguns deles.
 - Cada combinação pode ser escolhida apenas uma vez. O jogador pode decidir marcar 0 numa combinação, caso os requisitos de pontuação não sejam cumpridos.
 
-### Pontuação
+# Pontuação
 
 **Cada combinação tem uma pontuação diferente**
 
