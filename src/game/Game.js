@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Dice from "../dice/dice";
-import {faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix} from '@fortawesome/free-solid-svg-icons';
-
+import "./Game.css"
+import ScoreTable from "../score-table/ScoreTable";
 const NUM_DICES = 5;
 const NUM_ROLLS = 3; 
 
@@ -9,7 +9,7 @@ class Game extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      dices: [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix],
+      dices: Array.from({length: NUM_DICES}),
       locked: Array(NUM_DICES).fill(false),
       numRolls: NUM_ROLLS,
       isRolling: false,
@@ -20,8 +20,8 @@ class Game extends Component {
         fours: undefined,
         fives: undefined,
         sixes: undefined,
-        threeOfKind: undefined,
-        fourOfKind: undefined,
+        threeOfSameKind: undefined,
+        fourOfSameKind: undefined,
         fullHouse: undefined,
         smallStraight: undefined,
         largeStraight: undefined,
@@ -37,7 +37,7 @@ class Game extends Component {
   }
   
   componentDidMount () {
-    this.animationRoll(); 
+    //this.animationRoll(); 
   }
   
   displayRollInfo () {
@@ -59,7 +59,7 @@ class Game extends Component {
   roll (evt) {
     this.setState( st => ({
       dices: st.dices.map((val, i) => st.locked[i] ? val : Math.ceil(Math.random() * 6)),
-      locked: st.numRolls > 1 ? st.locked : Array(5).fill(true),
+      locked: st.numRolls > 1 ? st.locked : Array(NUM_DICES).fill(true),
       numRolls: st.numRolls - 1,
       isRolling: false
     }))
@@ -89,12 +89,12 @@ class Game extends Component {
 
 
   render () {
-    const { dices, numRolls, isRolling, locked } = this.state;
+    const { dices, locked, numRolls, isRolling, scores } = this.state;
     return (
-      <div>
-        <header>
-          <h1>Yahtzee!</h1>
-          <section>
+      <div className="Game">
+        <header className="Game-header">
+          <h2 className="Game-title">Yahtzee!</h2>
+          <section className="Game-dice-section">
             <Dice 
               dices={dices}
               locked={locked}
@@ -102,16 +102,18 @@ class Game extends Component {
               disabled={numRolls === 0}
               diceHandleClick={this.toggleLocked}
             />
-            <div>
-              <button
+            <div className="Game-button-wrapper">
+              <button 
+                className="Game-reroll"
                 disabled={ locked.every( x=>x ) || numRolls === 0 || isRolling }
+                onClick={this.animationRoll}
               >
                 {this.displayRollInfo()}
               </button>
             </div>
           </section>
         </header>
-        {/*ScoreTable*/}
+        <ScoreTable doScore={this.doScore} scores={scores} />
       </div>
     )
   }
